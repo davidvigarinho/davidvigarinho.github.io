@@ -300,6 +300,7 @@ input, select, textarea {
 	a {
 		color: #212931;
 		border-bottom-color: rgba(33, 41, 49, 0.5);
+		text-decoration: none;
 	}
 
 		a:hover {
@@ -2605,7 +2606,7 @@ input, select, textarea {
 		}
 
 		.image.left, .image.right {
-			max-width: 30%;
+			max-width: 40%;
 		}
 
 			.image.left img, .image.right img {
