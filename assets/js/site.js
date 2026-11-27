@@ -32,8 +32,9 @@
       const update = () => {
         ticking = false;
         const r = track.getBoundingClientRect();
-        const span = r.height - innerHeight;
-        const p = span > 0 ? clamp(-r.top / span, 0, 1) : 1;
+        const st = track.querySelector('.explode-sticky').getBoundingClientRect();
+        const span = r.height - st.height;
+        const p = span > 0 ? clamp((st.top - r.top) / span, 0, 1) : 1;
         setT(stage, 1 - ease(clamp(p / 0.8, 0, 1)));
       };
       const req = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
@@ -51,17 +52,28 @@
     });
   }
 
-  // one-time assemble -> explode on load (home page)
+  // one-time assemble -> explode on load (home page). If a 3D view is coming,
+  // hold the placeholder assembled and only animate if the 3D view fails.
   document.querySelectorAll('.stage[data-auto]').forEach(stage => {
     if (reduce) return setT(stage, 0);
     setT(stage, 1);
-    const start = performance.now() + 450, dur = 1600;
-    const step = now => {
-      const p = clamp((now - start) / dur, 0, 1);
-      setT(stage, 1 - ease(p));
-      if (p < 1) requestAnimationFrame(step);
+    const play = () => {
+      const start = performance.now() + 200, dur = 1600;
+      const step = now => {
+        const p = clamp((now - start) / dur, 0, 1);
+        setT(stage, 1 - ease(p));
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
     };
-    requestAnimationFrame(step);
+    const host = stage.closest('[data-corner3d]');
+    const gl = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
+    if (host && gl) {
+      let done = false;
+      host.addEventListener('corner3d:ready', () => { done = true; });
+      host.addEventListener('corner3d:fail', () => { if (!done) { done = true; play(); } });
+      setTimeout(() => { if (!done) { done = true; play(); } }, 8000);
+    } else play();
     addEventListener('resize', () => setT(stage, 0));
   });
 

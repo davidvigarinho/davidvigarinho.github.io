@@ -14,6 +14,10 @@
   <link rel="preload" href="assets/fonts/ibm-plex-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/site.css">
+  <script type="importmap">{"imports": {"three": "./assets/vendor/three/three.module.min.js", "three/addons/": "./assets/vendor/three/addons/"}}</script>
+  <link rel="modulepreload" href="./assets/vendor/three/three.module.min.js">
+  <link rel="preload" href="./assets/3d/fst09e-corner.glb" as="fetch" type="model/gltf-binary" crossorigin>
+  <script type="module" src="./assets/js/corner3d.js"></script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f4f3ef'/%3E%3Ctext x='4' y='23' font-family='monospace' font-size='17' font-weight='600' fill='%2316171a'%3EDV%3C/text%3E%3Crect x='4' y='26' width='24' height='2' fill='%23c22d19'/%3E%3C/svg%3E">
 </head>
 <body>
@@ -42,8 +46,11 @@
           <p class="lead">Before that: a Formula Student upright that raced at Hockenheim and a thesis on a suspension that leans into corners.</p>
         </div>
         <figure class="hero-stage full">
-          <div class="stage" data-auto role="img" aria-label="Exploded view of the FST09e front corner: brake disc, hub and planetary gearset, brake caliper, wheel bearings, upright with ring gear, mounting plate and brackets, AMK motor"><img class="layer" data-layer="F" src="assets/img/corner/LF.webp" alt="" style="left:75.165%;top:8.793%;width:23.692%" decoding="async"><img class="layer" data-layer="E" src="assets/img/corner/LE.webp" alt="" style="left:61.215%;top:1.227%;width:17.739%" decoding="async"><img class="layer" data-layer="D" src="assets/img/corner/LD.webp" alt="" style="left:37.943%;top:12.474%;width:28.322%" decoding="async"><img class="layer" data-layer="C" src="assets/img/corner/LC.webp" alt="" style="left:27.480%;top:36.912%;width:12.748%" decoding="async"><img class="layer" data-layer="B" src="assets/img/corner/LB.webp" alt="" style="left:18.040%;top:10.123%;width:19.904%" decoding="async"><img class="layer" data-layer="A" src="assets/img/corner/LA.webp" alt="" style="left:0.241%;top:34.969%;width:28.382%" decoding="async"></div>
-          <figcaption><span class="meta">Front corner of FST09e, from the team CAD. I designed the upright and hub.</span><a class="meta" href="work/fst09e.html">Take it apart &rarr;</a></figcaption>
+          <div class="corner corner--hero" data-corner3d="assets/3d/fst09e-corner.glb" data-mode="hero">
+            <div class="stage3d"></div>
+            <div class="stage" data-auto role="img" aria-label="Exploded view of the FST09e front corner: brake disc, hub and planetary gearset, brake caliper, wheel bearings, upright with ring gear, mounting plate and brackets, AMK motor"><img class="layer" data-layer="F" src="assets/img/corner/LF.webp" alt="" style="left:75.165%;top:8.793%;width:23.692%" decoding="async"><img class="layer" data-layer="E" src="assets/img/corner/LE.webp" alt="" style="left:61.215%;top:1.227%;width:17.739%" decoding="async"><img class="layer" data-layer="D" src="assets/img/corner/LD.webp" alt="" style="left:37.943%;top:12.474%;width:28.322%" decoding="async"><img class="layer" data-layer="C" src="assets/img/corner/LC.webp" alt="" style="left:27.480%;top:36.912%;width:12.748%" decoding="async"><img class="layer" data-layer="B" src="assets/img/corner/LB.webp" alt="" style="left:18.040%;top:10.123%;width:19.904%" decoding="async"><img class="layer" data-layer="A" src="assets/img/corner/LA.webp" alt="" style="left:0.241%;top:34.969%;width:28.382%" decoding="async"></div>
+          </div>
+          <figcaption><span class="meta">Front corner of FST09e, rendered from the team CAD. I designed the upright and hub.<span class="drag-hint"> Drag to turn it.</span></span><a class="meta" href="work/fst09e.html">Take it apart &rarr;</a></figcaption>
         </figure>
       </section>
 
