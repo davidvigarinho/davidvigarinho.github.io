@@ -434,3 +434,37 @@ figure.fig.narrow { max-width: 34rem; }
   .euv-grid { grid-template-columns: 1fr; }
   .euv-steps { grid-template-columns: 1fr 1fr; }
 }
+
+/* ---------- EUV scanner schematic (About) ---------- */
+.scanner-fig { margin-top: var(--s-7); border-top: 1px solid var(--ink); padding-top: var(--s-5); }
+.scanner { width: 100%; height: auto; display: block; }
+.scanner .sc-floor { stroke: var(--ink); stroke-width: 1.2; }
+.scanner .sc-hatch { stroke: var(--rule); stroke-width: 1; }
+.scanner .sc-src { fill: #f7e3df; stroke: var(--red); stroke-width: 1.6; }
+.scanner .sc-body { fill: var(--paper); stroke: var(--ink); stroke-width: 1.4; }
+.scanner .sc-col { fill: none; stroke: var(--ink-2); stroke-width: 1; stroke-dasharray: 4 3; }
+.scanner .sc-part { fill: var(--paper-2); stroke: var(--ink); stroke-width: 1.1; }
+.scanner .sc-stage { fill: var(--paper-2); stroke: var(--ink); stroke-width: 1.1; }
+.scanner .sc-reticle { fill: var(--ink); }
+.scanner .sc-wafer { stroke: var(--ink); stroke-width: 4; }
+.scanner .sc-rail { stroke: var(--ink-2); stroke-width: 1; }
+.scanner .sc-mirror { fill: none; stroke: var(--ink); stroke-width: 5; stroke-linecap: round; }
+.scanner .sc-m { stroke: var(--ink); stroke-width: 5; stroke-linecap: round; }
+.scanner .sc-drops { stroke: var(--ink-2); stroke-width: 3; stroke-dasharray: 1 7; stroke-linecap: round; }
+.scanner .sc-laser { stroke: var(--red); stroke-width: 4; }
+.scanner .sc-plasma { fill: var(--red); }
+.scanner .sc-cone { fill: rgba(194, 45, 25, .08); stroke: var(--red); stroke-width: 1; stroke-dasharray: 3 3; }
+.scanner .sc-beam { fill: none; stroke: var(--red); stroke-width: 1.6; stroke-dasharray: 5 4; stroke-linejoin: round; }
+.scanner .sc-if { fill: var(--red); }
+.scanner .sc-arrow { fill: none; stroke: var(--ink-2); stroke-width: 1; }
+.scanner .sc-lead { stroke: var(--ink-2); stroke-width: 1; }
+.scanner .sc-dot { fill: var(--ink); }
+.scanner .sc-n { font: 500 13px var(--mono); }
+.sc-legend { list-style: none; padding: 0; margin: var(--s-5) 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-3) var(--gap); font-size: var(--t-small); color: var(--ink-2); }
+.sc-legend li { display: flex; gap: var(--s-3); align-items: baseline; }
+.sc-legend b { color: var(--ink); font-weight: 500; }
+.sc-legend b.red { color: var(--red); }
+.sc-b { flex: none; display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; border: 1px solid var(--ink); font: 500 .75rem/1 var(--mono); color: var(--ink); }
+.sc-b.mine { background: var(--red); border-color: var(--red); color: #fff; }
+.scanner-fig figcaption { margin-top: var(--s-4); display: flex; gap: var(--s-4); font-size: var(--t-small); color: var(--ink-2); }
+@media (max-width: 820px) { .sc-legend { grid-template-columns: 1fr; } }
