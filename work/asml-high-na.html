@@ -80,7 +80,32 @@
       </section>
 
       <section class="block sheet ruled" aria-labelledby="s-03">
-        <div class="margin"><h2 class="section-label" id="s-03">The system</h2></div>
+        <div class="margin"><h2 class="section-label" id="s-03">How the source works</h2></div>
+        <div class="content">
+          <div class="euv" id="fig-2">
+            <div class="euv-grid">
+              <svg class="euv-zone" role="img" aria-label="Close-up: a tin droplet is flattened by a weak laser pulse, then turned into plasma by a strong one"></svg>
+              <svg class="euv-collector" role="img" aria-label="A curved collector mirror gathers light from the plasma and focuses it toward the scanner"></svg>
+            </div>
+            <div class="euv-controls">
+              <button class="btn euv-play" type="button" aria-pressed="true">Pause</button>
+              <input type="range" min="0" max="999" value="50" aria-label="Time within one 20 microsecond cycle">
+              <span class="mono euv-clock">1.0 µs</span>
+            </div>
+            <ol class="euv-steps" role="list">
+              <li><span class="mono">1</span><div><b>Droplet</b> A drop of molten tin leaves the generator at 70&nbsp;m/s.</div></li>
+              <li><span class="mono">2</span><div><b>Pre-pulse</b> A weak laser pulse flattens it into a pancake.</div></li>
+              <li><span class="mono">3</span><div><b>Main pulse</b> A powerful pulse vaporises the pancake into a plasma of about 500,000&nbsp;K.</div></li>
+              <li><span class="mono">4</span><div><b>Collect</b> The plasma emits 13.5&nbsp;nm light; a curved mirror gathers it and focuses it into the scanner.</div></li>
+            </ol>
+            <p class="meta" style="margin-top:var(--s-4);max-width:62ch">Fig. 2 &mdash; One cycle lasts 20&nbsp;µs; this animation slows it down 200,000 times. At 70&nbsp;m/s and 50,000 droplets a second, consecutive droplets are 1.4&nbsp;mm apart. Schematic: proportions, timings within the cycle and the mirror shape are illustrative.</p>
+          </div>
+          <p class="meta credit">Figures: ASML, <a href="https://www.asml.com/en/discover/hot-machines" rel="noopener">&ldquo;The hottest thing about ASML machines&rdquo;</a>: droplets at 70&nbsp;m/s, about 500,000&nbsp;K, 50,000 times a second.</p>
+        </div>
+      </section>
+
+      <section class="block sheet ruled" aria-labelledby="s-04">
+        <div class="margin"><h2 class="section-label" id="s-04">The system</h2></div>
         <div class="content">
           <div class="outcome-strip">
             <div><span class="n red">0.55<sup>NA</sup></span><p>Numerical aperture of the High NA optics, up from 0.33 in NXE systems.</p></div>
@@ -102,6 +127,7 @@
       </nav>
     </div>
   </main>
+  <script src="../assets/js/euv.js" defer></script>
 
   <script src="../assets/js/site.js" defer></script>
   <footer class="colophon">
