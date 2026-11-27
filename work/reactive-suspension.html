@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A reactive suspension that counters body roll | David Vigarinho</title>
+  <meta name="description" content="MSc thesis: a passive suspension concept that counters body roll, developed in ADAMS and validated against tilt-table tests on a real vehicle.">
+  <meta name="author" content="David Vigarinho">
+  <meta name="theme-color" content="#f4f3ef">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="A reactive suspension that counters body roll | David Vigarinho">
+  <meta property="og:description" content="MSc thesis: a passive suspension concept that counters body roll, developed in ADAMS and validated against tilt-table tests on a real vehicle.">
+  <meta property="og:image" content="https://davidvigarinho.github.io/assets/img/fst-hero-1600.jpg">
+  <link rel="preload" href="../assets/fonts/ibm-plex-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f4f3ef'/%3E%3Ctext x='4' y='23' font-family='monospace' font-size='17' font-weight='600' fill='%2316171a'%3EDV%3C/text%3E%3Crect x='4' y='26' width='24' height='2' fill='%23c22d19'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="wordmark" href="../index.html">David Vigarinho</a>
+      <nav class="nav meta" aria-label="Main">
+        <a href="../index.html#work" aria-current="page">Work</a>
+        <a href="../index.html#about" class="opt">About</a>
+        <a href="../index.html#contact">Contact</a>
+        <a href="/CV_EN_DavidVigarinho.pdf" download>CV&nbsp;(PDF)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <section class="sheet-head sheet" aria-label="Project title">
+        <div class="margin"><a class="meta" href="../index.html#work">&larr; Register</a></div>
+        <div class="content">
+          <span class="meta red">Sheet P-02</span>
+          <h1>A reactive suspension that counters body roll</h1>
+          <p class="sub">A suspension that counteracts body roll using only conventional, passive parts and no energy. Developed in ADAMS and validated on a real vehicle.</p>
+        </div>
+        <div class="content titleblock" role="group" aria-label="Title block">
+          <div><span class="caps">Sheet</span><span class="v mono">P-02</span></div>
+          <div><span class="caps">Date</span><span class="v mono">2022</span></div>
+          <div class="span2"><span class="caps">Context</span><span class="v">MSc thesis, Instituto Superior T&eacute;cnico</span></div>
+          <div class="span2"><span class="caps">Tools</span><span class="v">SolidWorks &middot; HyperMesh &middot; ADAMS &middot; MATLAB/Simulink</span></div>
+          <div><span class="caps">Test vehicle</span><span class="v">Quad (ATV), bought for the thesis</span></div>
+          <div><span class="caps">Grade</span><span class="v mono">19 / 20</span></div>
+          <div class="span2"><span class="caps">Validation</span><span class="v">Tilt-table test vs multibody model</span></div>
+          <div class="span4"><span class="caps">Result</span><span class="v">Proof of concept: the prototype design reaches a negative roll angle on the tilt table &mdash; it leans into the turn instead of out of it</span></div>
+        </div>
+        <div class="content hero">
+          <figure class="fig white" id="fig-1">
+            <img src="../assets/img/rs-model-800.jpg" srcset="../assets/img/rs-model-800.jpg 800w, ../assets/img/rs-model-1600.jpg 1600w" sizes="(max-width: 820px) 100vw, 75vw" width="1600" height="900" alt="CAD model of a quad bike frame with blue suspension arms and yellow springs" loading="lazy" decoding="async">
+            <figcaption><span class="mono">Fig.&nbsp;1</span><span class="cap">Detail design: the test vehicle with the reactive front and rear suspension.</span></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="block sheet ruled" aria-labelledby="s-01">
+        <div class="margin"><h2 class="section-label" id="s-01">Problem</h2></div>
+        <div class="content">
+          <div class="prose">
+            <p class="big">In a corner, lateral force rolls the body outwards and pulls the wheels away from their best angle to the road.</p>
+            <p>Active and semi-active systems can fight this, but they are heavy, complex, expensive and consume energy. The thesis asked a narrower question: can conventional, passive suspension elements be arranged so the vehicle counters roll on its own?</p>
+            <blockquote style="margin-top:var(--s-6); padding-left:var(--s-5); border-left:1px solid var(--red)">
+              <p>&ldquo;Our purpose in designing the suspension and steering is to attempt to maintain the wheels at the optimum angle to the road surface at all times and under all conditions&hellip; This is the Holy Grail of the designer and is, in practice, unattainable.&rdquo;</p>
+              <p class="meta" style="margin-top:var(--s-3)">&mdash; T. Pashley</p>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section class="block sheet ruled" aria-labelledby="s-02">
+        <div class="margin"><h2 class="section-label" id="s-02">Method</h2></div>
+        <div class="content">
+          <div class="prose">
+            <p>A simulation is only useful if you can trust it, so I started with a real vehicle. I bought a small quad, measured its centre of gravity and spring stiffness, and ran tilt-table tests on the standard suspension (Fig.&nbsp;2). I then built an ADAMS model of the same vehicle and compared it with the measurements (Fig.&nbsp;3).</p>
+          </div>
+          <div class="figs two">
+            <figure class="fig" id="fig-2">
+            <img src="../assets/img/rs-tilt-800.jpg" srcset="../assets/img/rs-tilt-800.jpg 800w, ../assets/img/rs-tilt-1600.jpg 1480w" sizes="(max-width: 820px) 100vw, 38vw" width="1480" height="840" alt="A quad bike tilted on a wooden platform raised by a red trolley jack" loading="lazy" decoding="async">
+            <figcaption><span class="mono">Fig.&nbsp;2</span><span class="cap">Tilt-table test on the standard vehicle.</span></figcaption>
+          </figure>
+            <figure class="fig white" id="fig-3">
+            <img src="../assets/img/rs-validation-800.jpg" srcset="../assets/img/rs-validation-800.jpg 800w, ../assets/img/rs-validation-1600.jpg 1279w" sizes="(max-width: 820px) 100vw, 38vw" width="1279" height="630" alt="Line chart of roll angle against platform angle: experimental data and ADAMS model lines overlap closely" loading="lazy" decoding="async">
+            <figcaption><span class="mono">Fig.&nbsp;3</span><span class="cap">Conventional geometry: measured roll angle vs the ADAMS model. They agree closely up to a platform angle of about 26&deg;.</span></figcaption>
+          </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="block sheet ruled" aria-labelledby="s-03">
+        <div class="margin"><h2 class="section-label" id="s-03">Design</h2></div>
+        <div class="content">
+          <div class="prose">
+            <p>With a baseline I could trust, I generated and compared several concepts in simulation, then developed the most promising one into a detailed design for the test vehicle: new front and rear suspension, modifications to the chassis, and a revised drivetrain. To fit the drivetrain, the rear track grew by 61&nbsp;mm. Critical parts were checked with FEA, and the design was set up to accommodate different drivers.</p>
+          </div>
+          <div class="figs two-one">
+            <figure class="fig" id="fig-4">
+            <img src="../assets/img/rs-sim-800.jpg" srcset="../assets/img/rs-sim-800.jpg 800w, ../assets/img/rs-sim-1600.jpg 1188w" sizes="(max-width: 820px) 100vw, 50vw" width="1188" height="651" alt="ADAMS simulation of the prototype vehicle on a tilted platform" loading="lazy" decoding="async">
+            <figcaption><span class="mono">Fig.&nbsp;4</span><span class="cap">ADAMS tilt-table simulation of the prototype.</span></figcaption>
+          </figure>
+            <figure class="fig white" id="fig-5">
+            <img src="../assets/img/rs-fea-800.jpg" width="729" height="1080" alt="Two FEA contour plots of a rear suspension part, von Mises stress and displacement" loading="lazy" decoding="async">
+            <figcaption><span class="mono">Fig.&nbsp;5</span><span class="cap">FEA of a rear suspension part: stress and displacement.</span></figcaption>
+          </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="block sheet ruled" aria-labelledby="s-04">
+        <div class="margin"><h2 class="section-label" id="s-04">Outcome</h2></div>
+        <div class="content">
+          <div class="outcome-strip">
+            <div><span class="n red">&lt;0&deg;</span><p>Roll angle reached by the prototype design on the tilt table: it leans into the turn.</p></div>
+            <div><span class="n">+61<sup>mm</sup></span><p>Rear track increase needed to package the new drivetrain.</p></div>
+            <div><span class="n">19<sup>/20</sup></span><p>Thesis grade, Instituto Superior T&eacute;cnico.</p></div>
+          </div>
+          <div class="prose" style="margin-top:var(--s-6)">
+            <h3>What the thesis showed</h3>
+            <p>The concept works: the prototype design reaches a negative roll angle in the tilt-table test (Fig.&nbsp;6). For that to happen, the springs&rsquo; anchor points have to sit above the centre of gravity of the sprung mass.</p>
+            <p>It comes with a trade-off. Because the centre of gravity moves sideways as the body leans, the concept counters body roll but reduces rollover safety. The next step would be to build the prototype, repeat the tilt-table test and compare it with the model.</p>
+          </div>
+          <div class="tilt" id="tilt">
+            <div class="tilt-head">
+              <p><span class="mono">Fig.&nbsp;6</span>&ensp;<span class="label">Tilt table: standard vs reactive suspension</span></p>
+              <p class="live-only"><span class="meta">Platform&ensp;</span><span class="tilt-angle">16&deg;</span></p>
+            </div>
+            <div class="live-only">
+              <div class="tilt-panels">
+                <div class="tilt-panel std"><h4>Standard suspension</h4><svg aria-hidden="true"></svg><span class="meta">Body angle relative to platform</span><span class="tilt-val"></span></div>
+                <div class="tilt-panel rea"><h4>Reactive suspension</h4><svg aria-hidden="true"></svg><span class="meta">Body angle relative to platform</span><span class="tilt-val"></span></div>
+              </div>
+              <input id="tilt-range" type="range" min="12" max="28.5" step="0.5" value="16" aria-label="Platform angle">
+              <label class="meta" for="tilt-range">Drag to tilt the platform, 12&deg; to 28.5&deg;.</label>
+              <div class="tilt-chart">
+                <svg aria-hidden="true"></svg>
+                <div class="legend meta"><span><i></i>Standard</span><span><i class="r"></i>Reactive</span><span>Body angle relative to platform vs platform angle</span></div>
+              </div>
+              <p class="meta" style="margin-top:var(--s-4);max-width:60ch">Positive means the body rolls outwards, down the slope; negative means it leans into it. The drawing exaggerates the body angle ten times; the numbers are real, read off the tilt-table plots in the thesis. Reactive values are from the ADAMS simulation of the prototype design, which stops at 20&deg;.</p>
+            </div>
+            <div class="static-only">
+              <figure class="fig white" id="fig-6">
+            <img src="../assets/img/rs-prototype-800.jpg" srcset="../assets/img/rs-prototype-800.jpg 800w, ../assets/img/rs-prototype-1600.jpg 1188w" sizes="(max-width: 820px) 100vw, 75vw" width="1188" height="616" alt="Line chart of roll angle against platform angle for the conventional geometry and the prototype" loading="lazy" decoding="async">
+            <figcaption><span class="mono">Fig.&nbsp;6</span><span class="cap">Tilt-table simulation: prototype vs conventional geometry.</span></figcaption>
+          </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block sheet ruled" aria-labelledby="s-05">
+        <div class="margin"><h2 class="section-label" id="s-05">Defence</h2></div>
+        <div class="content">
+          <figure class="fig" id="fig-7">
+            <video controls preload="none" playsinline poster="../assets/img/rs-poster-1600.jpg" width="1920" height="1080">
+              <source src="/Thesis_defesa.mp4" type="video/mp4">
+              <a href="/Thesis_defesa.mp4">Download the thesis defence video (MP4, 16&nbsp;MB)</a>
+            </video>
+            <figcaption><span class="meta">Fig. 7</span><span class="cap">The presentation I made for my thesis defence (3&nbsp;min&nbsp;24&nbsp;s, no audio).</span></figcaption>
+          </figure>
+        </div>
+      </section>
+      <nav class="pager" aria-label="Project navigation">
+        <a href="fst09e.html"><span class="meta">&larr; P-01</span><span class="t">FST09e upright and hub</span></a>
+        <a href="../index.html#work"><span class="meta">Back &rarr;</span><span class="t">Register</span></a>
+      </nav>
+    </div>
+  </main>
+
+  <script src="../assets/js/site.js" defer></script>
+  <footer class="colophon">
+    <div class="wrap">
+      <span class="meta">&copy; 2026 David Vigarinho, Eindhoven</span>
+      <span class="meta">Set in IBM Plex. No trackers.</span>
+    </div>
+  </footer>
+</body>
+</html>
